@@ -1,11 +1,11 @@
 package helpers
 
-import(
+import (
 	"os"
 	"strings"
 )
 
-func EnforceHTTP() string {
+func EnforceHTTP(url string) string {
 	if url[:4] != "http" {
 		return "http://" + url
 	}
@@ -13,19 +13,18 @@ func EnforceHTTP() string {
 }
 
 func RemoveDomainError(url string) bool {
-	if url == os.Getenv("DOMAIN"){
+	if url == os.Getenv("DOMAIN") {
 		return false
 	}
 
-	newURL := string.Replace(url, "http://", "" , 1)
+	newURL := strings.Replace(url, "http://", "", 1)
 	newURL = strings.Replace(newURL, "https://", "", 1)
 	newURL = strings.Replace(newURL, "www.", "", 1)
 	newURL = strings.Split(newURL, "/")[0]
 
 	if newURL == os.Getenv("DOMAIN") {
-		return false;
+		return false
 	}
 
-	return true;
+	return true
 }
-
