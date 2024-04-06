@@ -1,4 +1,4 @@
-FROM golang:alphine as builder
+FROM golang:alpine as builder
 
 RUN mkdir /builder
 
@@ -8,7 +8,7 @@ WORKDIR /build
 
 RUN go build -o main .
 
-FROM alphine
+FROM alpine
 
 RUN adduser -S -D -H    -h  /app    appuser
 
