@@ -1,9 +1,11 @@
 package main
 
-import(
+import (
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/danishbinasmath/url-shortener-golang-redis/routes"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/joho/godotenv"
@@ -21,7 +23,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	app := fiber.New
+	app := fiber.New()
 
 	app.Use(logger.New())
 
